@@ -1,0 +1,46 @@
+CREATE DATABASE IF NOT EXISTS libreria;
+
+USE libreria;
+
+-- Crea la tabla Authors
+CREATE TABLE IF NOT EXISTS Authors (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL
+);
+
+-- Crea la tabla Books
+CREATE TABLE IF NOT EXISTS Books (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Title VARCHAR(255) NOT NULL,
+    Chapters INT NOT NULL,
+    Pages INT NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    AuthorId INT,
+    FOREIGN KEY (AuthorId) REFERENCES Authors(Id)
+);
+-- Inserta datos en la tabla Authors
+INSERT INTO Authors (Name) VALUES
+    ('Isaac Asimov'),
+    ('Arthur C. Clarke'),
+    ('Philip K. Dick'),
+    ('Ursula K. Le Guin'),
+    ('H.G. Wells'),
+    ('Ray Bradbury'),
+    ('Frank Herbert'),
+    ('William Gibson'),
+    ('Robert A. Heinlein'),
+    ('Octavia E. Butler');
+
+-- Inserta datos en la tabla Books
+INSERT INTO Books (Title, Chapters, Pages, Price, AuthorId) VALUES
+    ('Foundation', 7, 500, 19.99, 1),
+    ('2001: A Space Odyssey', 10, 300, 14.99, 2),
+    ('Do Androids Dream of Electric Sheep?', 20, 256, 12.99, 3),
+    ('The Left Hand of Darkness', 12, 320, 17.99, 4),
+    ('The War of the Worlds', 15, 280, 15.99, 5),
+    ('Fahrenheit 451', 8, 200, 9.99, 6),
+    ('Dune', 30, 600, 24.99, 7),
+    ('Neuromancer', 18, 320, 16.99, 8),
+    ('Stranger in a Strange Land', 25, 450, 21.99, 9),
+    ('Kindred', 14, 350, 18.99, 10);
+
